@@ -60,23 +60,53 @@
 2. Compile and package this application into a separate JAR file.
 
 ### Deployment on EC2 Instances
-1. SSH into the EC2 instances using their respective IP addresses.
-2. Configure AWS credentials on each instance using the `aws configure` command.
-3. Install OpenJDK Java (e.g., OpenJDK 19.0.1).
-4. Move the Java installation to the appropriate directory.
-5. Edit the `/etc/profile` file to set Java environment variables.
-- Example content to add:
-```
-    export JAVA_HOME=/usr/share/jdk-19.0.1
-    export PATH=$JAVA_HOME/bin:$PATH
-    export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-```
-
-6. Verify the Java installation.
-7. Transfer the JAR files to the EC2 instances using a tool like Cyberduck.
-8. Run the image classification and text detection applications in parallel on the EC2 instances.
+1. First you need to install Java on EC2 Instance, The process of downloading and extracting java is given below
+2. Transfer the JAR files to the EC2 instances using a tool like scp command.
+3. Run the image classification and text detection applications in parallel on the EC2 instances.
 - Example commands:
   - For the car recognition app: `java -jar car-recognition-app-0.0.1-SNAPSHOT.jar`
   - For the text detection app: `java -jar text-detection-app-0.0.1-SNAPSHOT.jar`
+
+
+### Installation of JAVA on EC2 Instance
+# Installing Oracle JDK
+
+To install Oracle JDK, follow these steps:
+
+1. **Download Oracle JDK:**
+   - You need to download Oracle JDK from Oracle's website. Please note that Oracle JDK requires you to accept the Oracle Technology Network License Agreement, which may not be suitable for some environments.
+   
+   ```wget https://download.oracle.com/java/19/archive/jdk-19.0.1_linux-x64_bin.tar.gz```
+
+   - After downloading the JDK, extract it using the tar command.
+   ```tar -xvf jdk-19.0.1_linux-x64_bin.tar.gz```
+
+   - You can move the extracted JDK to a suitable location on your system. For example, you can move it to /usr/local.
+   ```sudo mv jdk-19.0.1 /usr/local/```
+
+   - To set up environment variables, create a new file for Oracle JDK in /etc/profile.d/ to avoid altering /etc/profile,   which is not recommended.
+   ```
+      sudo touch /etc/profile.d/oraclejdk.sh
+      sudo chmod +x /etc/profile.d/oraclejdk.sh
+      sudo vim /etc/profile.d/oraclejdk.sh
+  ```
+
+  - Add the following lines to /etc/profile.d/oraclejdk.sh:
+  ```
+      export JAVA_HOME=/usr/local/jdk-19.0.1
+      export PATH=$JAVA_HOME/bin:$PATH
+  ```
+
+  - To apply the environment variables, either log out and log back in or run:
+  ```
+      To apply the environment variables, either log out and log back in or run:
+  ```
+
+  - Finally, you can check the installed Java version:
+  ```
+    java -version
+  ```
+
+
 
 By following these steps, you can set up an image classification and text detection system on AWS using EC2 instances, S3, Rekognition, and SQS. Make sure to adapt the instructions as needed for your specific project.
