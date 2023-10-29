@@ -18,7 +18,6 @@ Image classification and text detection application using AWS platform
 - [x] Java application deployment on EC2 instances
 
 ### Java application deployment on EC2 instances
-![messageCount]()
 * SSH to the EC2 instances using respective IP addresses.
 * Provide AWS configuration using ```aws configure``` command.
 * Install openjdk-java-19.0.1 using the command ```wget https://download.oracle.com/java/19/archive/jdk-19.0.1_linux-x64_bin.tar.gz```
