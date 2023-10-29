@@ -17,13 +17,17 @@ public class CarRecognition {
 	public static void main(String[] args) throws InterruptedException {
 		SpringApplication.run(CarRecognition.class, args);
 		AWSS3 s3Service = new AWSS3();
-		S3Client s3Client = s3Service.getS3Client();
-		List<S3Object> images = s3Service.s3DataFetch(s3Client);
-		AWSSQSService sqsService = new AWSSQSService();
-		SqsClient sqsClient = sqsService.getSqsClient();
-		String queueURL = sqsService.getQueueUrl(sqsClient);
+
 		AWSRekognition rekognitionService = new AWSRekognition();
 		RekognitionClient rekognitionClient = rekognitionService.getRekognitionClient();
+
+		S3Client s3Client = s3Service.getS3Client();
+		List<S3Object> images = s3Service.s3DataFetch(s3Client);
+		
+		AWSSQSService sqsService = new AWSSQSService();
+		SqsClient sqsClient = sqsService.getSqsClient();
+		
+		String queueURL = sqsService.getQueueUrl(sqsClient);
 
 		log.info("queueUrl: {}", queueURL);
 		for(S3Object img : images) {
