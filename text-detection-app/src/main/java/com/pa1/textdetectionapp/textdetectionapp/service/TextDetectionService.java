@@ -7,8 +7,6 @@ import software.amazon.awssdk.services.rekognition.model.DetectTextRequest;
 import software.amazon.awssdk.services.rekognition.model.DetectTextResponse;
 import software.amazon.awssdk.services.rekognition.model.Image;
 import software.amazon.awssdk.services.rekognition.model.TextDetection;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,14 +24,10 @@ public class TextDetectionService {
     }
 
     public void detectTextFromImage(RekognitionClient rekognitionClient, Image image, String imgKey, Map<String, String> mp) {
-        DetectTextRequest textRequest = DetectTextRequest.builder()
-                .image(image)
-                .build();
-
+        DetectTextRequest textRequest = DetectTextRequest.builder().image(image).build();
         DetectTextResponse textResponse = rekognitionClient.detectText(textRequest);
         List<TextDetection> textCollection = textResponse.textDetections();
-        log.info("Detected text from image {}: {}", imgKey, textCollection.size());
-
+        log.info("Detected Text from the Image {}: {}", imgKey, textCollection.size());
         StringBuilder s = new StringBuilder();
         for (TextDetection text: textCollection) {
             s = s.append(text.detectedText()).append(" ");
