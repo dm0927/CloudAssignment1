@@ -74,22 +74,28 @@
 To install Oracle JDK, follow these steps:
 
 1. **Download Oracle JDK:**
-   - You need to download Oracle JDK from Oracle's website. Please note that Oracle JDK requires you to accept the Oracle Technology Network License Agreement, which may not be suitable for some environments.
-   
-   ```wget https://download.oracle.com/java/19/archive/jdk-19.0.1_linux-x64_bin.tar.gz```
+  - You need to download Oracle JDK from Oracle's website. Please note that Oracle JDK requires you to accept the Oracle Technology Network License Agreement, which may not be suitable for some environments.
+  
+  ```
+    wget https://download.oracle.com/java/19/archive/jdk-19.0.1_linux-x64_bin.tar.gz
+  ```
 
-   - After downloading the JDK, extract it using the tar command.
-   ```tar -xvf jdk-19.0.1_linux-x64_bin.tar.gz```
+  - After downloading the JDK, extract it using the tar command.
+  ```
+    tar -xvf jdk-19.0.1_linux-x64_bin.tar.gz
+  ```
 
-   - You can move the extracted JDK to a suitable location on your system. For example, you can move it to /usr/local.
-   ```sudo mv jdk-19.0.1 /usr/local/```
+  - You can move the extracted JDK to a suitable location on your system. For example, you can move it to /usr/local.
+  ```
+    sudo mv jdk-19.0.1 /usr/local/
+  ```
 
-   - To set up environment variables, create a new file for Oracle JDK in /etc/profile.d/ to avoid altering /etc/profile,   which is not recommended.
-    ```
-       sudo touch /etc/profile.d/oraclejdk.sh
-       sudo chmod +x /etc/profile.d/oraclejdk.sh
-       sudo vim /etc/profile.d/oraclejdk.sh
-    ```
+  - To set up environment variables, create a new file for Oracle JDK in /etc/profile.d/ to avoid altering /etc/profile,   which is not recommended.
+  ```
+      sudo touch /etc/profile.d/oraclejdk.sh
+      sudo chmod +x /etc/profile.d/oraclejdk.sh
+      sudo vim /etc/profile.d/oraclejdk.sh
+  ```
 
   - Add the following lines to /etc/profile.d/oraclejdk.sh:
   ```
