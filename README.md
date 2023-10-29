@@ -31,9 +31,9 @@
 1. Once the EC2 instances are created, download the SSH key (e.g., CS643-Cloud.pem).
 2. Open your terminal and navigate to the directory where the key is located.
 3. Use the following command to connect to the EC2 instance:
-    ```
-      ssh -i "CS643-Cloud.pem" ec2-user@ec2-50-17-36-229.compute-1.amazonaws.com
-    ```
+  ```
+    ssh -i "CS643-Cloud.pem" ec2-user@ec2-50-17-36-229.compute-1.amazonaws.com
+  ```
 4. Confirm the connection by typing "yes."
 
 ### AWS SQS Configuration
@@ -75,7 +75,7 @@ To install Oracle JDK, follow these steps:
 
 1. **Download Oracle JDK:**
   - You need to download Oracle JDK from Oracle's website. Please note that Oracle JDK requires you to accept the Oracle Technology Network License Agreement, which may not be suitable for some environments.
-  
+
   ```
     wget https://download.oracle.com/java/19/archive/jdk-19.0.1_linux-x64_bin.tar.gz
   ```
