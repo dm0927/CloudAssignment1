@@ -7,9 +7,6 @@ Image classification and text detection application using AWS platform
 * AWS SQS Messaging Service 
 * AWS Rekognition
 
-## Architectural Diagram
-![ArchDiagram](https://github.com/phet2309/ProgrammingAssignment1/blob/main/Images/fig1.jpeg)
-
 ## Steps Performed
 - [x] AWS Learner's Lab Setup
 - [x] AWS CLI configuration
@@ -28,16 +25,16 @@ Image classification and text detection application using AWS platform
 * Extract the files using the command ```tar zxvf jdk-19.0.1_linux-x64_bin.tar.gz``` 
 * Move the file using ```sudo mv jdk-19.0.1 /usr/share```
 * Edit the etc/profile file using ```sudo vim /etc/profile``` in insert mode. Save the file with :wq after changes.
-* Add the below details in /etc/profile file.
-```export JAVA_HOME=/usr/share/jdk-19.0.1
-export PATH=$JAVA_HOME/bin:$PATH
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+* Add the below details in the file.
+```
+    export JAVA_HOME=/usr/share/jdk-19.0.1
+    export PATH=$JAVA_HOME/bin:$PATH
+    export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ```
 * Check the Java version and verify.
 * Move the .jar file in EC2 instance using cyberduck.
-* Run the command ```java -jar car-recognition-app-0.0.1-SNAPSHOT.jar``` for car recognition app, and run the ```java -jar text-detection-app-0.0.1-SNAPSHOT.jar```
+* Run the command ```java -jar car-recognition-app-0.0.1-SNAPSHOT.jar``` for car recognition app, and  ```java -jar text-detection-app-0.0.1-SNAPSHOT.jar``` for text recognition app
  command to run text detection app. Both app can run in parallel.
-![AppsRunningParallel]()
 
 ## Step-by-step guide
 ### AWS Learner's Lab Setup 
@@ -47,37 +44,31 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ### AWS CLI Setup
 * After installing AWS CLI, then credentials and config can be setup using <br />
 ```aws configure``` <br />
-* This asks for the AccessKey, SecertKey and SessionToken. This creates credentials amd config file in ```.aws``` directory. There can be multiple profiles to use different accounts.
-* ```export AWS_PROFILE=<profile_name>``` is used to setup environment profile for aws commands.
+* This asks for the AccessKey, SecertKey and SessionToken. This creates credentials amd config file in ```.aws/credentials``` directory. There can be multiple profiles to use different accounts.
 
 
 ### EC2 Instance Configuration
 * Navigate to ```Services -> EC2```
 * Navigate to ```Instances -> Launch Instances```
-* Name the instance, select ```Amazon Linux 2 Kernel 5.10 AMI 2.0.20230307.0 x86_64 HVM gp2```
-  as AMI, 64-bit x86 architecture.
+* Name the instance, select ```Amazon Linux```
 * Select the ```t2.micro``` as instance type.
-* Select vockey as keypair.
+* Select or Create a new keypair.
 * Select launch instance.
-<br /> ![AccessManagementEC2]()
 
 ### SSH access to the EC2 instances
 * As per requirement, the two instances are created.
-<br /> ![RunningInstances]()
 * Download the ssh key (CS643-Cloud.pem)
-* Change the CS643-Cloud.pem file's permission to read-only. <br />
-```chmod 400 CS643-Cloud.pem```
 * Navigate to the CS643-Cloud.pem file's location and run the below command. <br />
 ```ssh -i "CS643-Cloud.pem" ec2-user@ec2-50-17-36-229.compute-1.amazonaws.com``` here IPaddress is IPv4 address of EC2 instance.
 * Type yes and the EC2 will be accessible from command line.
 
 ### AWS SQS configuration
-![SQS]() <br />
 * Navigate to ```Amazon SQS``` page.
 * Select ```Create Queue```.
 * Select queue type and provide the queue name. In our case, ```carsinformation.fifo```
 * Put in the configuration details for SQS.
 * Select encryption and access policy. It can be assigned to the LabRole also.
+* Alternatively you can directly define the queue name in Code and AWS will automatically create a new SQS with the name if not available
 
 ### JAVA App for image recognition
 * Fetch all the images from S3 bucket.
