@@ -68,8 +68,8 @@
   - For the text detection app: `java -jar text-detection-app-0.0.1-SNAPSHOT.jar`
 
 
-### Installation of JAVA on EC2 Instance
-# Installing Oracle JDK
+# Installation of JAVA on EC2 Instance
+### Installing Oracle JDK
 
 To install Oracle JDK, follow these steps:
 
