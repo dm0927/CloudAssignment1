@@ -1,11 +1,11 @@
 # ProgrammingAssignment1
-Image classification and text detection application using AWS platform
+Image classification and Text detection of the images using AWS platform
 
 ## Services Used
-* AWS S3
 * AWS EC2 Instance
-* AWS SQS Messaging Service 
+* AWS S3
 * AWS Rekognition
+* AWS SQS Messaging Service 
 
 ## Steps Performed
 - [x] AWS Learner's Lab Setup
@@ -17,24 +17,6 @@ Image classification and text detection application using AWS platform
 - [x] Text detection java program
 - [x] Java application deployment on EC2 instances
 
-### Java application deployment on EC2 instances
-* SSH to the EC2 instances using respective IP addresses.
-* Provide AWS configuration using ```aws configure``` command.
-* Install openjdk-java-19.0.1 using the command ```wget https://download.oracle.com/java/19/archive/jdk-19.0.1_linux-x64_bin.tar.gz```
-* Extract the files using the command ```tar zxvf jdk-19.0.1_linux-x64_bin.tar.gz``` 
-* Move the file using ```sudo mv jdk-19.0.1 /usr/share```
-* Edit the etc/profile file using ```sudo vim /etc/profile``` in insert mode. Save the file with :wq after changes.
-* Add the below details in the file.
-```
-    export JAVA_HOME=/usr/share/jdk-19.0.1
-    export PATH=$JAVA_HOME/bin:$PATH
-    export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-```
-* Check the Java version and verify.
-* Move the .jar file in EC2 instance using cyberduck.
-* Run the command ```java -jar car-recognition-app-0.0.1-SNAPSHOT.jar``` for car recognition app, and  ```java -jar text-detection-app-0.0.1-SNAPSHOT.jar``` for text recognition app
- command to run text detection app. Both app can run in parallel.
-
 ## Step-by-step guide
 ### AWS Learner's Lab Setup 
 * Login to AWS Learner's Lab through student account. The screen displays Readme file to display steps for the setup. AWS details shows the AWS credentials for the account.
@@ -44,7 +26,6 @@ Image classification and text detection application using AWS platform
 * After installing AWS CLI, then credentials and config can be setup using <br />
 ```aws configure``` <br />
 * This asks for the AccessKey, SecertKey and SessionToken. This creates credentials amd config file in ```.aws/credentials``` directory. There can be multiple profiles to use different accounts.
-
 
 ### EC2 Instance Configuration
 * Navigate to ```Services -> EC2```
@@ -84,3 +65,20 @@ Image classification and text detection application using AWS platform
 * The images with detected text are written in ```ImageText.txt``` file with their respective indexes.
 * Prepare the JAR file for deployment.
 
+### Java application deployment on EC2 instances
+* SSH to the EC2 instances using respective IP addresses.
+* Provide AWS configuration using ```aws configure``` command.
+* Install openjdk-java-19.0.1 using the command ```wget https://download.oracle.com/java/19/archive/jdk-19.0.1_linux-x64_bin.tar.gz```
+* Extract the files using the command ```tar zxvf jdk-19.0.1_linux-x64_bin.tar.gz``` 
+* Move the file using ```sudo mv jdk-19.0.1 /usr/share```
+* Edit the etc/profile file using ```sudo vim /etc/profile``` in insert mode. Save the file with :wq after changes.
+* Add the below details in the file.
+```
+    export JAVA_HOME=/usr/share/jdk-19.0.1
+    export PATH=$JAVA_HOME/bin:$PATH
+    export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+```
+* Check the Java version and verify.
+* Move the .jar file in EC2 instance using cyberduck.
+* Run the command ```java -jar car-recognition-app-0.0.1-SNAPSHOT.jar``` for car recognition app, and  ```java -jar text-detection-app-0.0.1-SNAPSHOT.jar``` for text recognition app
+ command to run text detection app. Both app can run in parallel.
