@@ -85,9 +85,10 @@ To install Oracle JDK, follow these steps:
    ```sudo mv jdk-19.0.1 /usr/local/```
 
    - To set up environment variables, create a new file for Oracle JDK in /etc/profile.d/ to avoid altering /etc/profile,   which is not recommended.
-    ```sudo touch /etc/profile.d/oraclejdk.sh
+    ```
+       sudo touch /etc/profile.d/oraclejdk.sh
        sudo chmod +x /etc/profile.d/oraclejdk.sh
-        sudo vim /etc/profile.d/oraclejdk.sh
+       sudo vim /etc/profile.d/oraclejdk.sh
     ```
 
   - Add the following lines to /etc/profile.d/oraclejdk.sh:
