@@ -113,7 +113,3 @@ To install Oracle JDK, follow these steps:
   ```
     java -version
   ```
-
-
-
-By following these steps, you can set up an image classification and text detection system on AWS using EC2 instances, S3, Rekognition, and SQS. Make sure to adapt the instructions as needed for your specific project.
